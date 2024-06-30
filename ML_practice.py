@@ -34,3 +34,5 @@ kn = KNeighborsClassifier()
 kn.fit(fish_data, fish_target)
 kn.score(fish_data, fish_target)
 
+kn.predict([[30, 300]])
+
