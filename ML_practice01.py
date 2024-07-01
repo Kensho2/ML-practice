@@ -13,11 +13,32 @@ fish_target = [1] * 35 + [0] * 14
 from sklearn.neighbors import KNeighborsClassifier
 kn = KNeighborsClassifier()
 
-train_input = fish_data[:35]
-train_target = fish_target[:35]
-test_input = fish_data[35:]
-test_target = fish_data[35:]
+import numpy as np
+input_arr = np.array(fish_data)
+target_arr = np.array(fish_target)
+
+print(input_arr.shape)
+
+np.random
+index = np.arange(49)
+np.random.shuffle(index)
+
+print(index)
+
+train_input = input_arr[index[:35]]
+train_target = target_arr[index[:35]]
+
+test_input = input_arr[index[35:]]
+test_target = target_arr[index[35:]]
+
+import matplotlib.pyplot as plt
+
+plt.scatter(train_input[:, 0], train_input[:, 1])
+plt.scatter(test_input[:, 0], test_input[:, 1])
+plt.xlabel("length")
+plt.ylabel("weight")
+plt.show()
 
 kn.fit(train_input, train_target)
 kn.score(test_input, test_target)
-
+print(kn.predict(test_input))
